@@ -1,0 +1,17 @@
+<p>grid-board works!</p>
+
+<table width='100%'>
+  <thead>
+    <tr>
+      <th align='center' *ngFor="let head of items[0]">{{ head }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr align='center' *ngFor="let item of items">
+      <td style='background:RGB({{cell}},{{cell}},{{cell}})' *ngFor="let cell of item">{{ cell }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<button  (click)="onClick()" >
+Click Me</button>
