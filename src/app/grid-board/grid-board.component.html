@@ -11,8 +11,9 @@
 </table>
 </div>
 <div>
-<button  (click)="onClick()" >
-Run</button> Current Instruction: {{instructionPtr}}
+<button  (click)="onStep()" >
+Step</button> <button  (click)="onReset()" >
+Reset</button> Current Instruction: {{instructionPtr}}
 
 <p>
 <textarea style="height: 100px"
