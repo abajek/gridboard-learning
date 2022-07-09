@@ -41,6 +41,7 @@ export class GridBoardComponent implements OnInit {
     var oldPersonCol = this.personCol;
     var instructionArr = this.instructions.split("\n", 100);
     var cmd = instructionArr[this.instructionPtr]
+    console.log(cmd)
     if ( cmd == "F"){
       switch (this.personDirection){
         case 0:
@@ -81,9 +82,9 @@ export class GridBoardComponent implements OnInit {
       }
     }
     if ( cmd == "L")
-      this.personDirection -= 1
+      this.personDirection = this.personDirection>0?this.personDirection-1 : 3
     if ( cmd == "R")
-      this.personDirection += 1
+      this.personDirection = this.personDirection<3?this.personDirection+1 : 0
     this.instructionPtr += 1
     console.log(this.instructions)
     if ( this.personRow == this.exitRow && this.personCol == this.exitCol ) {
