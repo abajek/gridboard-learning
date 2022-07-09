@@ -17,18 +17,11 @@ export class GridBoardComponent implements OnInit {
   personDirection = 1;
   exitRow = 0;
   exitCol = 0;
-  instructions:string = "F\nF\nR\nF\nF\nL\nF"
+  instructions:string = ""
   instructionPtr: number = 0
 
   ngOnInit() {
-    for (var i = 0; i < this.width; i++){
-      this.items[i]=[]
-      for (var j = 0; j < this.height; j++){
-        this.items[i][j] = Math.round(Math.random()*10);
-      }
-    }
-    this.exitRow = Math.round(Math.random()*(this.height-1));
-    this.exitCol = Math.round(Math.random()*(this.width-1));
+    this.generateBoard()
   }
 
   onReset() {
@@ -36,6 +29,24 @@ export class GridBoardComponent implements OnInit {
     this.personCol = 0
     this.personRow = 0
     this.personDirection = 1
+  }
+
+  generateBoard(){
+    for (var i = 0; i < this.width; i++){
+      this.items[i]=[]
+      for (var j = 0; j < this.height; j++){
+        this.items[i][j] = Math.round(Math.random()*10);
+      }
+    }
+    this.items[0][0] = 0
+    this.exitRow = Math.round(Math.random()*(this.height-1));
+    this.exitCol = Math.round(Math.random()*(this.width-1));
+  }
+
+  onNewBoard(){
+    this.generateBoard();
+    this.onReset();
+
   }
 
   onStep() {
@@ -92,7 +103,6 @@ export class GridBoardComponent implements OnInit {
     if ( cmd == "R")
       this.personDirection = this.personDirection<3?this.personDirection+1 : 0
     this.instructionPtr += 1
-    console.log(this.instructions)
     if ( this.personRow == this.exitRow && this.personCol == this.exitCol ) {
       this.win()
       return false;

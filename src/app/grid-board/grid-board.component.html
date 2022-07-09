@@ -1,25 +1,37 @@
+<div class="container-md">
+  <div class="row align-items-start">
+    <div class="col-sm-8">
+      <table>
+        <tbody>
+          <tr
+            style="height:25px"
+            align="center"
+            *ngFor="let item of items; let row = index"
+          >
+            <ng-container *ngFor="let cell of item; let col = index">
+              <td
+                style="border-width: 1px; width:25px; color:yellow"
+                style="background:{{ getTileColor(row, col) }}"
+              >
+                {{ getTileIcon(row, col) }}
+              </td>
+            </ng-container>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-4">
+      <H2>Instruction List</H2>
+      <p>
+        <textarea style="height: 100px" [(ngModel)]="instructions"></textarea>
+      </p>
 
-<div >
-<table >
-  <tbody>
-    <tr style="height:25px" align='center' *ngFor="let item of items; let row = index">
-      <ng-container *ngFor="let cell of item; let col = index">
-        <td style="width:25px; color:yellow" style='background:{{getTileColor(row,col)}}'>{{getTileIcon(row,col)}}</td>
-      </ng-container>
-    </tr>
-  </tbody>
-</table>
-</div>
-<div>
-<H2>Instruction List</H2>
-<p>
-<textarea style="height: 100px"
-[(ngModel)]="instructions"></textarea>
-</p>
-
-<button  (click)="onStep()" >Step</button> 
-<button  (click)="onRun()" >Run</button>
-<button  (click)="onReset()">Reset</button> 
-<br/>
-Current Instruction: {{instructionPtr}} 
+      <button (click)="onStep()" class="btn btn-primary">Step</button>
+      &nbsp;<button (click)="onRun()" class="btn btn-primary">Run</button>
+      &nbsp;<button (click)="onReset()" class="btn  btn-warning">Reset</button>
+      &nbsp;<button (click)="onNewBoard()" class="btn  btn-danger">New Board</button>
+      <br />
+      Current Instruction: {{ instructionPtr }}
+    </div>
+  </div>
 </div>
