@@ -128,7 +128,7 @@ export class GridBoardComponent implements OnInit {
     if ( row == this.personRow && col == this.personCol)
       return "#0000FF"
     else if ( row == this.exitRow && col == this.exitCol)
-      return "#00FF00"
+      return "#007700"
     else if ( this.items[row][col]>7 )
       return "#FF0000"
     else

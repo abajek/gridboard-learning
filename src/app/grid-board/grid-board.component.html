@@ -1,17 +1,16 @@
 
 <div >
-<table width='100%'>
+<table >
   <tbody>
     <tr style="height:25px" align='center' *ngFor="let item of items; let row = index">
       <ng-container *ngFor="let cell of item; let col = index">
-        <td style="width:25px" style='background:{{getTileColor(row,col)}}'>{{getTileIcon(row,col)}}</td>
+        <td style="width:25px; color:yellow" style='background:{{getTileColor(row,col)}}'>{{getTileIcon(row,col)}}</td>
       </ng-container>
     </tr>
   </tbody>
 </table>
 </div>
 <div>
-
 <H2>Instruction List</H2>
 <p>
 <textarea style="height: 100px"
