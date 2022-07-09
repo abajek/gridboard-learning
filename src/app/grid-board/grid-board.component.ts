@@ -33,6 +33,9 @@ export class GridBoardComponent implements OnInit {
 
   onReset() {
     this.instructionPtr = 0
+    this.personCol = 0
+    this.personRow = 0
+    this.personDirection = 1
   }
 
   onStep() {
@@ -40,6 +43,9 @@ export class GridBoardComponent implements OnInit {
     var oldPersonRow = this.personRow;
     var oldPersonCol = this.personCol;
     var instructionArr = this.instructions.split("\n", 100);
+    var numInstr = instructionArr.length;
+    if (this.instructionPtr>=numInstr)
+      return;
     var cmd = instructionArr[this.instructionPtr]
     console.log(cmd)
     if ( cmd == "F"){
@@ -89,14 +95,27 @@ export class GridBoardComponent implements OnInit {
     console.log(this.instructions)
     if ( this.personRow == this.exitRow && this.personCol == this.exitCol ) {
       this.win()
+      return false;
     } else if (this.items[this.personRow][this.personCol]>7){
       this.boop();
       this.personRow = oldPersonRow;
       this.personCol = oldPersonCol;
       this.personDirection = oldPersonDirection
+      return false;
     } else {
       this.beep()
+      return true;
     }
+  }
+
+  interval;
+  onRun(){
+    
+      this.interval = setInterval(() => {
+        if (!this.onStep())
+          clearInterval(this.interval)
+      },1000)
+  
   }
 
   win(){

@@ -11,12 +11,16 @@
 </table>
 </div>
 <div>
-<button  (click)="onStep()" >
-Step</button> <button  (click)="onReset()" >
-Reset</button> Current Instruction: {{instructionPtr}}
 
+<H2>Instruction List</H2>
 <p>
 <textarea style="height: 100px"
 [(ngModel)]="instructions"></textarea>
 </p>
+
+<button  (click)="onStep()" >Step</button> 
+<button  (click)="onRun()" >Run</button>
+<button  (click)="onReset()">Reset</button> 
+<br/>
+Current Instruction: {{instructionPtr}} 
 </div>
