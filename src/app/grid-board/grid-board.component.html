@@ -23,7 +23,7 @@
     <div class="col-sm-4">
       <H2>Instruction List</H2>
       <p>
-        <textarea style="height: 100px" [(ngModel)]="instructions"></textarea>
+        <textarea style="height: 200px" [(ngModel)]="instructions"></textarea>
       </p>
 
       <button (click)="onStep()" class="btn btn-primary">Step</button>
@@ -31,7 +31,7 @@
       &nbsp;<button (click)="onReset()" class="btn  btn-warning">Reset</button>
       &nbsp;<button (click)="onNewBoard()" class="btn  btn-danger">New Board</button>
       <br />
-      Current Instruction: {{ instructionPtr }}
+      Current Instruction: <span class="badge bg-primary">{{ instructionPtr }}</span>
     </div>
   </div>
 </div>
