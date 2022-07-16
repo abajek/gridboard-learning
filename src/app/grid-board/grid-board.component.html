@@ -28,10 +28,16 @@
 
       <button (click)="onStep()" class="btn btn-primary">Step</button>
       &nbsp;<button (click)="onRun()" class="btn btn-primary">Run</button>
-      &nbsp;<button (click)="onReset()" class="btn  btn-warning">Reset</button>
-      &nbsp;<button (click)="onNewBoard()" class="btn  btn-danger">New Board</button>
+      &nbsp;<button (click)="onReset()" class="btn btn-warning">Reset</button>
+      &nbsp;<button (click)="onNewBoard(9)" class="btn btn-danger">
+        New Easy Board
+      </button>
+      &nbsp;<button (click)="onNewBoard(7)" class="btn btn-danger">
+        New Hard Board
+      </button>
       <br />
-      Current Instruction: <span class="badge bg-primary">{{ instructionPtr }}</span>
+      Current Instruction:
+      <span class="badge bg-primary">{{ instructionPtr }}</span>
     </div>
   </div>
 </div>

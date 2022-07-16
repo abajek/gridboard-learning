@@ -19,6 +19,8 @@ export class GridBoardComponent implements OnInit {
   exitCol = 0;
   instructions:string = ""
   instructionPtr: number = 0
+  easiness: number = 9;
+
 
   ngOnInit() {
     this.generateBoard()
@@ -47,7 +49,8 @@ export class GridBoardComponent implements OnInit {
     this.exitCol = Math.round(Math.random()*(this.width-1));
   }
 
-  onNewBoard(){
+  onNewBoard(easiness:number){
+    this.easiness = easiness
     this.generateBoard();
     this.onReset();
     this.instructions = "";
@@ -111,7 +114,7 @@ export class GridBoardComponent implements OnInit {
     if ( this.personRow == this.exitRow && this.personCol == this.exitCol ) {
       this.win()
       return false;
-    } else if (this.items[this.personRow][this.personCol]>9){
+    } else if (this.items[this.personRow][this.personCol]>this.easiness){
       this.boop();
       this.personRow = oldPersonRow;
       this.personCol = oldPersonCol;
@@ -149,7 +152,7 @@ export class GridBoardComponent implements OnInit {
       return "#0000FF"
     else if ( row == this.exitRow && col == this.exitCol)
       return "#007700"
-    else if ( this.items[row][col]>9 )
+    else if ( this.items[row][col]>this.easiness )
       return "#FF0000"
     else
       return "#666666"
