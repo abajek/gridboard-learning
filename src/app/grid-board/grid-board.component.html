@@ -21,7 +21,8 @@
       </table>
     </div>
     <div class="col-sm-4">
-      <H2>Instruction List</H2>
+      <H2>Instruction List</H2>Current Instruction:
+      <span class="badge bg-primary">{{ instructionPtr }}</span>
       <p>
         <textarea style="height: 200px" [(ngModel)]="instructions"></textarea>
       </p>
@@ -36,8 +37,7 @@
         New Hard Board
       </button>
       <br />
-      Current Instruction:
-      <span class="badge bg-primary">{{ instructionPtr }}</span>
+      
     </div>
   </div>
 </div>

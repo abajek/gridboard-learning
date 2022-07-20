@@ -49,10 +49,28 @@ export class GridBoardComponent implements OnInit {
     this.exitCol = Math.round(Math.random()*(this.width-1));
   }
 
+  evaluateBoard(){
+    //check at least one block in the way horizontally
+    var satisfiesHorizontal = false
+    for (var i = 0; i <= this.exitRow; i++){
+      if (this.items[i][this.personCol] > this.easiness)
+        satisfiesHorizontal = true
+    }
+    //check at least one block in the way vertically
+    var satisfiesVertical = false
+    for (var j = 0; j <= this.exitCol; j++){
+      if (this.items[this.personRow][j] > this.easiness)
+      satisfiesVertical = true
+    }
+    return satisfiesHorizontal && satisfiesVertical
+  }
+
   onNewBoard(easiness:number){
     this.easiness = easiness
-    this.generateBoard();
     this.onReset();
+    do {
+      this.generateBoard();
+    } while (!this.evaluateBoard())
     this.instructions = "";
   }
 
