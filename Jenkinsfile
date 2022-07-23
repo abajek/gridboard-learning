@@ -17,7 +17,7 @@ pipeline {
         }
         stage ('Scan'){
             steps {
-                //sh 'ng lint'
+                echo 'ng lint'
             }
         }
         stage ('Test'){
